@@ -9,19 +9,7 @@ public class Util {
     private static final String DB_LOG = "postgres";
     private static final String DB_PASS = "Publish1996";
 
-    public static Connection getconn() {
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.getConnection(DB_URL, DB_LOG, DB_PASS);
-            if (connection != null) {
-                System.out.println("Connected to the database! " + connection);
-            } else {
-                System.out.println("Failed to make connection!");
-            }
-        } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-        }
-        return connection;
+    public static Connection getconn() throws SQLException {
+        return DriverManager.getConnection(DB_URL, DB_LOG, DB_PASS);
     }
 }
