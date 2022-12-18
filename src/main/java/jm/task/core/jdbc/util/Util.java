@@ -21,5 +21,18 @@ public class Util {
     public static Connection getconn() throws SQLException {
         return DriverManager.getConnection(DB_URL, DB_LOG, DB_PASS);
     }
+    public static SessionFactory getSessionFactory () {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.driver_class", DB_DRIVER_CLASS);
+        properties.setProperty("hibernate.connection.url", DB_URL);
+        properties.setProperty("hibernate.connection.username", DB_LOG);
+        properties.setProperty("hibernate.connection.password", DB_PASS);
+        properties.setProperty("hibernate.dialect", DB_DIALECT);
 
+        Configuration configuration = new Configuration().addAnnotatedClass(User.class).setProperties(properties);
+
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                .applySettings(configuration.getProperties()).build();
+        return configuration.buildSessionFactory(serviceRegistry);
+    }
 }

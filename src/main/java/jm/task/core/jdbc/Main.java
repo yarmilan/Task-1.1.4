@@ -4,8 +4,11 @@ import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
+import java.util.logging.Level;
+
 public class Main {
     public static void main(String[] args) {
+        java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
         UserServiceImpl userService = new UserServiceImpl();
         userService.dropUsersTable();
         userService.createUsersTable();
