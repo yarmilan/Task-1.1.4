@@ -9,14 +9,14 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
 
-    public static final String CREATE_TBL = "CREATE TABLE IF NOT EXISTS Users " +
+    private static final String CREATE_TBL = "CREATE TABLE IF NOT EXISTS Users " +
             "(id BIGSERIAL PRIMARY KEY, name TEXT, lastName TEXT, age INTEGER)";
 
-    public static final String DROP_US_TBL = "DROP TABLE IF EXISTS Users";
-    public static final String SAVE_US = "INSERT INTO Users (name, lastName, age) VALUES" + "(?, ?, ?)";
-    public static final String REMOVE_US_BY_ID = "DELETE FROM Users WHERE id = ?";
-    public static final String GET_ALL_US = "SELECT * FROM Users";
-    public static final String CLEAN_US_TBL = "DELETE FROM Users";
+    private static final String DROP_US_TBL = "DROP TABLE IF EXISTS Users";
+    private static final String SAVE_US = "INSERT INTO Users (name, lastName, age) VALUES" + "(?, ?, ?)";
+    private static final String REMOVE_US_BY_ID = "DELETE FROM Users WHERE id = ?";
+    private static final String GET_ALL_US = "SELECT * FROM Users";
+    private static final String CLEAN_US_TBL = "DELETE FROM Users";
 
     public UserDaoJDBCImpl() {
 
